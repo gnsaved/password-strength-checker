@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Password Strength Checker</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <a class="back" href="../">← Back</a>
+      <div>
+        <h1>Password Strength Checker</h1>
+        <p class="muted">Regex checks for uppercase, numbers, symbols (+ length). Live feedback as you type.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <label class="label" for="pwd">Password</label>
+
+      <div class="row">
+        <input id="pwd" class="input" type="password" placeholder="Type a password…" autocomplete="new-password" />
+        <button id="toggle" class="ghost" type="button" aria-pressed="false">Show</button>
+      </div>
+
+      <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="meterFill" class="meter__fill" style="width:0%"></div>
+      </div>
+
+      <div class="status">
+        <span id="label" class="pill pill--red">Weak</span>
+        <span id="scoreText" class="muted">0/4 checks passed</span>
+      </div>
+
+      <ul class="checks" aria-live="polite">
+        <li id="cLen" class="check">At least 8 characters</li>
+        <li id="cUp"  class="check">Contains an uppercase letter (A–Z)</li>
+        <li id="cNum" class="check">Contains a number (0–9)</li>
+        <li id="cSym" class="check">Contains a symbol (!@#$…)</li>
+      </ul>
+
+      <p class="hint muted">
+        Tip: This is a **simple strength indicator** (great for portfolios). Real-world password policy varies by product.
+      </p>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

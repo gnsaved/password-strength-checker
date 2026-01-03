@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Password Strength Checker — Designs</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="stage">
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    <div class="bg-orb orb-3" aria-hidden="true"></div>
+
+    <header class="top">
+      <h1>Password Strength Checker</h1>
+      <p class="sub">
+        Two UI designs — same idea. Pick a design to preview.
+      </p>
+    </header>
+
+    <section class="board" aria-label="Design selector">
+      <div class="board__tabs" aria-hidden="true">
+        <span class="tab isOn"></span>
+        <span class="tab"></span>
+        <span class="tab"></span>
+        <span class="tab"></span>
+        <span class="tab"></span>
+      </div>
+
+      <div class="board__lines" aria-hidden="true">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+      </div>
+
+      <!-- Dual pill links (like your screenshot) -->
+      <div class="dual" role="navigation" aria-label="Open design">
+        <a class="dual__side dual__side--left" href="./design1/">
+          <span class="dual__label">Design 1</span>
+        </a>
+
+        <span class="dual__or" aria-hidden="true">OR</span>
+
+        <a class="dual__side dual__side--right" href="./design2/">
+          <span class="dual__label">Design 2</span>
+        </a>
+      </div>
+
+      <div class="mini">
+        <div class="mini__card">
+          <div class="mini__title">Tip</div>
+          <div class="mini__text">
+            If a link shows 404, confirm each folder has an <code>index.html</code>.
+          </div>
+        </div>
+
+        <div class="mini__card">
+          <div class="mini__title">Paths</div>
+          <div class="mini__text">
+            <code>/design1/</code> and <code>/design2/</code> are relative to this page.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>Vanilla HTML/CSS • GitHub Pages friendly</span>
+    </footer>
+  </main>
+</body>
+</html>
