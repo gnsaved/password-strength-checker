@@ -50,6 +50,10 @@ h1 { margin: 0; font-size: 20px; }
   cursor: pointer;
 }
 .ghost:hover { background: rgba(255,255,255,.06); }
+.ghost:focus-visible{
+  outline: 3px solid rgba(231,238,252,.22);
+  outline-offset: 2px;
+}
 
 .meter {
   margin-top: 12px;
@@ -63,7 +67,7 @@ h1 { margin: 0; font-size: 20px; }
   height: 100%;
   width: 0%;
   border-radius: 999px;
-  transition: width .18s ease;
+  transition: width .18s ease, background-color .18s ease;
 }
 
 .status { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top: 12px; }
@@ -86,3 +90,12 @@ h1 { margin: 0; font-size: 20px; }
 .check { margin: 6px 0; color:#a9b8d6; }
 .check.ok { color: #baf2d4; }
 .hint { margin-top: 12px; }
+
+/* Strength theming controlled by JS via data attributes */
+.input[data-strength="weak"]   { border-color: rgba(255, 80, 80, .55); }
+.input[data-strength="okay"]   { border-color: rgba(255, 210, 90, .55); }
+.input[data-strength="strong"] { border-color: rgba(90, 230, 160, .55); }
+
+.meter__fill[data-strength="weak"]   { background: rgba(255, 80, 80, .85); }
+.meter__fill[data-strength="okay"]   { background: rgba(255, 210, 90, .90); }
+.meter__fill[data-strength="strong"] { background: rgba(90, 230, 160, .90); }
