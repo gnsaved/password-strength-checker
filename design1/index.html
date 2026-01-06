@@ -9,23 +9,46 @@
 <body>
   <main class="wrap">
     <header class="top">
-      <a class="back" href="../">← Back</a>
+      <a class="back" href="../" aria-label="Go back">← Back</a>
       <div>
         <h1>Password Strength Checker</h1>
         <p class="muted">Regex checks for uppercase, numbers, symbols (+ length). Live feedback as you type.</p>
       </div>
     </header>
 
-    <section class="card">
+    <section class="card" aria-label="Password strength checker">
       <label class="label" for="pwd">Password</label>
 
       <div class="row">
-        <input id="pwd" class="input" type="password" placeholder="Type a password…" autocomplete="new-password" />
-        <button id="toggle" class="ghost" type="button" aria-pressed="false">Show</button>
+        <input
+          id="pwd"
+          class="input"
+          type="password"
+          placeholder="Type a password…"
+          autocomplete="new-password"
+          spellcheck="false"
+          aria-describedby="scoreText hintText"
+        />
+        <button
+          id="toggle"
+          class="ghost"
+          type="button"
+          aria-pressed="false"
+          aria-controls="pwd"
+        >
+          Show
+        </button>
       </div>
 
-      <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-        <div id="meterFill" class="meter__fill" style="width:0%"></div>
+      <div
+        class="meter"
+        role="progressbar"
+        aria-label="Password strength"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+      >
+        <div id="meterFill" class="meter__fill"></div>
       </div>
 
       <div class="status">
@@ -33,19 +56,19 @@
         <span id="scoreText" class="muted">0/4 checks passed</span>
       </div>
 
-      <ul class="checks" aria-live="polite">
-        <li id="cLen" class="check">At least 8 characters</li>
-        <li id="cUp"  class="check">Contains an uppercase letter (A–Z)</li>
-        <li id="cNum" class="check">Contains a number (0–9)</li>
-        <li id="cSym" class="check">Contains a symbol (!@#$…)</li>
+      <ul class="checks" role="list" aria-live="polite" aria-label="Password requirements">
+        <li id="cLen" class="check" aria-checked="false">At least 8 characters</li>
+        <li id="cUp"  class="check" aria-checked="false">Contains an uppercase letter (A–Z)</li>
+        <li id="cNum" class="check" aria-checked="false">Contains a number (0–9)</li>
+        <li id="cSym" class="check" aria-checked="false">Contains a symbol (!@#$…)</li>
       </ul>
 
-      <p class="hint muted">
-        Tip: This is a **simple strength indicator** (great for portfolios). Real-world password policy varies by product.
+      <p id="hintText" class="hint muted">
+        Tip: This is a <strong>simple strength indicator</strong> (great for portfolios). Real-world password policy varies by product.
       </p>
     </section>
   </main>
 
-  <script src="./app.js"></script>
+  <script src="./app.js" defer></script>
 </body>
 </html>
