@@ -1,14 +1,23 @@
 # Password Strength Checker (Vanilla JS)
 
-A clean password strength checker UI (no APIs) that:
-- Updates a strength bar (Weak → Medium → Strong → Very Strong)
-- Shows password length live
-- Checks for: lowercase, uppercase, numbers, symbols (Regex)
-- Estimates brute-force crack time (rough demo assumption)
+A lightweight, responsive password strength checker (no APIs) that provides real-time feedback on password quality.
 
-## Run
+## Features
+- Live strength meter: **Weak → Medium → Strong → Very Strong**
+- Live password length counter
+- Rule checks via Regex: **lowercase, uppercase, number, symbol**
+- Estimated brute-force crack time (demo approximation)
+- Show/Hide password toggle
+- Accessible UI labels and status updates
+
+## Tech
+- HTML + CSS
+- Vanilla JavaScript
+- Regex-based validation (no external libraries)
+
+## Run locally
 Just open `index.html` in your browser.
 
-## Notes
-Crack-time is a **rough brute-force estimate** assuming very fast offline guessing (~10B guesses/sec).
-Real-world cracking depends on hashing algorithm, rate-limits, leaks, and password reuse.
+## Notes / Disclaimer
+Crack-time is a **rough brute-force estimate** assuming fast offline guessing (~10B guesses/sec) and a basic character-set model.
+Real-world cracking depends on hashing algorithms, rate limits, password reuse, leaked databases, and attacker resources.
