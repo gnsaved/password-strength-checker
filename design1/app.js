@@ -12,6 +12,12 @@
   const cNum = document.getElementById("cNum");
   const cSym = document.getElementById("cSym");
 
+  // Guard: don't crash if markup changes
+  if (
+    !pwd || !toggle || !meter || !meterFill || !label || !scoreText ||
+    !cLen || !cUp || !cNum || !cSym
+  ) return;
+
   const RX_UPPER = /[A-Z]/;
   const RX_NUM   = /\d/;
   const RX_SYM   = /[^A-Za-z0-9]/; // any non-alphanumeric
@@ -23,6 +29,13 @@
 
   function setCheck(el, ok) {
     el.classList.toggle("ok", ok);
+    el.setAttribute("aria-checked", ok ? "true" : "false");
+  }
+
+  function setTheme(theme) {
+    // theme: "weak" | "okay" | "strong"
+    pwd.dataset.strength = theme;
+    meterFill.dataset.strength = theme;
   }
 
   function render() {
@@ -42,21 +55,18 @@
     const pct = Math.round((score / 4) * 100);
 
     meter.setAttribute("aria-valuenow", String(pct));
-    meterFill.style.width = pct + "%";
+    meterFill.style.width = `${pct}%`;
 
-    // Color logic: Red → Yellow → Green
+    // Strength label + theme (colors handled in CSS)
     if (score <= 1) {
       setPill("red", "Weak");
-      pwd.style.borderColor = "rgba(255, 80, 80, .55)";
-      meterFill.style.background = "rgba(255, 80, 80, .85)";
+      setTheme("weak");
     } else if (score === 2) {
       setPill("yellow", "Okay");
-      pwd.style.borderColor = "rgba(255, 210, 90, .55)";
-      meterFill.style.background = "rgba(255, 210, 90, .90)";
+      setTheme("okay");
     } else {
       setPill("green", "Strong");
-      pwd.style.borderColor = "rgba(90, 230, 160, .55)";
-      meterFill.style.background = "rgba(90, 230, 160, .90)";
+      setTheme("strong");
     }
 
     scoreText.textContent = `${score}/4 checks passed`;
@@ -66,10 +76,12 @@
     const isHidden = pwd.type === "password";
     pwd.type = isHidden ? "text" : "password";
     toggle.textContent = isHidden ? "Hide" : "Show";
-    toggle.setAttribute("aria-pressed", String(isHidden));
+    toggle.setAttribute("aria-pressed", isHidden ? "true" : "false");
     pwd.focus();
   });
 
   pwd.addEventListener("input", render);
+
+  // init
   render();
 })();
