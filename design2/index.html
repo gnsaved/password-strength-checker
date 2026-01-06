@@ -4,13 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Password Strength Checker</title>
+  <meta name="description" content="Check password strength with live rules (length, upper/lowercase, numbers, symbols) and crack-time estimate." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="wrap">
     <section class="card" aria-label="Password strength checker">
       <header class="card__header">
-        <p class="hint">Type &amp; check the strength of your password.</p>
+        <p class="hint">Type and check the strength of your password.</p>
 
         <div class="length">
           <span class="length__label">Length:</span>
@@ -28,10 +29,12 @@
             placeholder="Enter password…"
             autocomplete="new-password"
             spellcheck="false"
+            required
+            minlength="1"
             aria-describedby="strengthText crackText"
           />
 
-          <button id="toggleBtn" class="eyeBtn" type="button" aria-label="Show password">
+          <button id="toggleBtn" class="eyeBtn" type="button" aria-label="Show password" aria-pressed="false">
             <!-- eye icon -->
             <svg class="eyeIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" stroke-width="2"/>
@@ -48,51 +51,44 @@
           </button>
         </div>
 
-        <div class="meter" role="status" aria-live="polite">
+        <!-- Better semantics: progressbar -->
+        <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" aria-label="Password strength">
           <div id="meterFill" class="meter__fill">
             <span id="strengthText" class="meter__text">—</span>
           </div>
         </div>
 
         <div class="includeRow">
-          <span class="includeLabel">What's include:</span>
+          <span class="includeLabel">Includes:</span>
 
-          <div class="chips" aria-label="Password includes">
-            <div class="chip" id="chipLower">
-              <span class="chip__dot" aria-hidden="true">
-                <span class="chip__check">✓</span>
-              </span>
-              <span>Lower Case</span>
+          <div class="chips" role="list" aria-label="Password checks">
+            <div class="chip" id="chipLower" role="listitem">
+              <span class="chip__dot" aria-hidden="true"><span class="chip__check">✓</span></span>
+              <span>Lowercase</span>
             </div>
 
-            <div class="chip" id="chipUpper">
-              <span class="chip__dot" aria-hidden="true">
-                <span class="chip__check">✓</span>
-              </span>
-              <span>Upper Case</span>
+            <div class="chip" id="chipUpper" role="listitem">
+              <span class="chip__dot" aria-hidden="true"><span class="chip__check">✓</span></span>
+              <span>Uppercase</span>
             </div>
 
-            <div class="chip" id="chipNum">
-              <span class="chip__dot" aria-hidden="true">
-                <span class="chip__check">✓</span>
-              </span>
+            <div class="chip" id="chipNum" role="listitem">
+              <span class="chip__dot" aria-hidden="true"><span class="chip__check">✓</span></span>
               <span>Number</span>
             </div>
 
-            <div class="chip" id="chipSym">
-              <span class="chip__dot" aria-hidden="true">
-                <span class="chip__check">✓</span>
-              </span>
-              <span>Symbols</span>
+            <div class="chip" id="chipSym" role="listitem">
+              <span class="chip__dot" aria-hidden="true"><span class="chip__check">✓</span></span>
+              <span>Symbol</span>
             </div>
           </div>
         </div>
 
         <hr class="divider" />
 
-        <div class="crack">
+        <div class="crack" aria-label="Crack time estimate">
           <div class="crack__top">It would take</div>
-          <div class="crack__mid" id="crackText">
+          <div class="crack__mid" id="crackText" aria-live="polite">
             <span id="crackValue" class="crack__value">—</span>
             <span id="crackUnit" class="crack__unit">—</span>
           </div>
@@ -110,6 +106,6 @@
     </footer>
   </main>
 
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
