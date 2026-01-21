@@ -2,24 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="description" content="Password Strength Checker — pick a design to preview (Design 1 or Design 2)." />
   <title>Password Strength Checker — Designs</title>
+
+  <!-- Keep your existing CSS -->
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <!-- Skip link for accessibility (style it in CSS if you want) -->
+  <a class="skip-link" href="#designs">Skip to designs</a>
+
   <main class="stage">
+    <!-- Decorative background orbs -->
     <div class="bg-orb orb-1" aria-hidden="true"></div>
     <div class="bg-orb orb-2" aria-hidden="true"></div>
     <div class="bg-orb orb-3" aria-hidden="true"></div>
 
-    <header class="top">
+    <header class="top" role="banner">
       <h1>Password Strength Checker</h1>
-      <p class="sub">
-        Two UI designs — same idea. Pick a design to preview.
-      </p>
+      <p class="sub">Two UI designs — same idea. Pick a design to preview.</p>
     </header>
 
-    <section class="board" aria-label="Design selector">
+    <section class="board" id="designs" aria-labelledby="designs-title">
+      <h2 class="sr-only" id="designs-title">Design selector</h2>
+
+      <!-- Decorative header bits (tabs/lines) -->
       <div class="board__tabs" aria-hidden="true">
         <span class="tab isOn"></span>
         <span class="tab"></span>
@@ -34,37 +43,42 @@
         <div class="line line-3"></div>
       </div>
 
-      <!-- Dual pill links (like your screenshot) -->
-      <div class="dual" role="navigation" aria-label="Open design">
-        <a class="dual__side dual__side--left" href="./design1/">
+      <!-- Primary navigation -->
+      <nav class="dual" aria-label="Open a design">
+        <a class="dual__side dual__side--left" href="./design1/" aria-label="Open Design 1">
+          <span class="dual__kicker">Preview</span>
           <span class="dual__label">Design 1</span>
+          <span class="dual__hint">Clean • Classic meter</span>
         </a>
 
         <span class="dual__or" aria-hidden="true">OR</span>
 
-        <a class="dual__side dual__side--right" href="./design2/">
+        <a class="dual__side dual__side--right" href="./design2/" aria-label="Open Design 2">
+          <span class="dual__kicker">Preview</span>
           <span class="dual__label">Design 2</span>
+          <span class="dual__hint">Modern • Card layout</span>
         </a>
-      </div>
+      </nav>
 
-      <div class="mini">
-        <div class="mini__card">
-          <div class="mini__title">Tip</div>
-          <div class="mini__text">
+      <!-- Helpful notes -->
+      <aside class="mini" aria-label="Helpful notes">
+        <article class="mini__card">
+          <h3 class="mini__title">Tip</h3>
+          <p class="mini__text">
             If a link shows 404, confirm each folder has an <code>index.html</code>.
-          </div>
-        </div>
+          </p>
+        </article>
 
-        <div class="mini__card">
-          <div class="mini__title">Paths</div>
-          <div class="mini__text">
+        <article class="mini__card">
+          <h3 class="mini__title">Paths</h3>
+          <p class="mini__text">
             <code>/design1/</code> and <code>/design2/</code> are relative to this page.
-          </div>
-        </div>
-      </div>
+          </p>
+        </article>
+      </aside>
     </section>
 
-    <footer class="foot">
+    <footer class="foot" role="contentinfo">
       <span>Vanilla HTML/CSS • GitHub Pages friendly</span>
     </footer>
   </main>
